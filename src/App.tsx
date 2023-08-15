@@ -1,10 +1,14 @@
-
-import Stopwatch from "./components/Stopwatch";
-import "./index.css";
+import React from "react";
+import "./App.css";
+import Stopwatch from ".";
+import Timer from "./Timer";
 
 function App() {
   return (
-  <Stopwatch />
+    <div className="App">
+      <Stopwatch />
+      <Timer initialTime={5 * 60 * 1000} /> {/* 5 minutes */}
+    </div>
   );
 }
 
