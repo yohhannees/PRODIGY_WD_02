@@ -7,7 +7,7 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   const [remainingTime, setRemainingTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
-  const [inputTime, setInputTime] = useState(initialTime / 1000);
+  const [inputTime, setInputTime] = useState(initialTime / 60000); // Minutes
 
   useEffect(() => {
     let interval: number | null = null;
@@ -34,8 +34,13 @@ const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   };
 
   const resetTimer = () => {
-    setRemainingTime(inputTime * 1000);
+    setRemainingTime(inputTime * 60000); 
     setIsRunning(false);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    resetTimer();
   };
 
   const formatTime = (time: number) => {
@@ -47,11 +52,15 @@ const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   return (
     <div>
       <h2>Timer</h2>
-      <input
-        type="number"
-        value={inputTime}
-        onChange={(e) => setInputTime(Number(e.target.value))}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          value={inputTime}
+          onChange={(e) => setInputTime(Number(e.target.value))}
+        />
+        <span> minutes</span>
+        <button type="submit">Set Timer</button>
+      </form>
       <p>{formatTime(remainingTime)}</p>
       <button onClick={toggleTimer}>{isRunning ? "Pause" : "Start"}</button>
       <button onClick={resetTimer}>Reset</button>
