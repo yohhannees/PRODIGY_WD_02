@@ -7,6 +7,7 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   const [remainingTime, setRemainingTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
+  const [inputTime, setInputTime] = useState(initialTime / 1000);
 
   useEffect(() => {
     let interval: number | null = null;
@@ -33,7 +34,7 @@ const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   };
 
   const resetTimer = () => {
-    setRemainingTime(initialTime);
+    setRemainingTime(inputTime * 1000);
     setIsRunning(false);
   };
 
@@ -46,6 +47,11 @@ const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   return (
     <div>
       <h2>Timer</h2>
+      <input
+        type="number"
+        value={inputTime}
+        onChange={(e) => setInputTime(Number(e.target.value))}
+      />
       <p>{formatTime(remainingTime)}</p>
       <button onClick={toggleTimer}>{isRunning ? "Pause" : "Start"}</button>
       <button onClick={resetTimer}>Reset</button>

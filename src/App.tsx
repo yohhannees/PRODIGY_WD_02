@@ -1,7 +1,7 @@
-import React from "react";
-import "./App.css";
-import Stopwatch from ".";
-import Timer from "./Timer";
+
+import "./index.css";
+import Stopwatch from "../src/components/Stopwatch";
+import Timer from "../src/components/Timer";
 
 function App() {
   return (
