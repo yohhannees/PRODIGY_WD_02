@@ -58,7 +58,6 @@ const Timer: React.FC<TimerProps> = ({ initialTime }) => {
           value={inputTime}
           onChange={(e) => setInputTime(Number(e.target.value))}
         />
-        <span> minutes</span>
         <button type="submit">Set Timer</button>
       </form>
       <p>{formatTime(remainingTime)}</p>
