@@ -7,7 +7,7 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ initialTime }) => {
   const [remainingTime, setRemainingTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
-  const [inputTime, setInputTime] = useState(initialTime / 60000); // Minutes
+  const [inputTime, setInputTime] = useState(initialTime / 60000); 
 
   useEffect(() => {
     let interval: number | null = null;
