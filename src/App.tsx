@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Stopwatch />
-      <Timer initialTime={5 * 60 * 1000} /> {/* 5 minutes */}
+      <Timer initialTime={0}/>
     </div>
   );
 }
